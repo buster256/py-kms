@@ -1,0 +1,17 @@
+version: 'latest'
+
+services:
+  kms:
+    image: ghcr.io/py-kms-organization/py-kms:python3
+    ports:
+      - 1688:1688
+      - 8080:8080
+    environment:
+      - IP=0.0.0.0
+      - SQLITE=true
+      - HWID=RANDOM
+      - LOGLEVEL=INFO
+    restart: always
+    volumes:
+      - ./db:/home/py-kms/db
+      - /etc/localtime:/etc/localtime:ro
